@@ -1,0 +1,442 @@
+#include<iostream>
+#include<fstream>
+#include<cmath>
+#include<string>
+
+
+using namespace std;
+
+
+int main() {
+	ofstream outFile;
+	outFile.open("Result.txt");
+
+
+	//-------------Start doing 0 File--------------//
+
+	ifstream inFile;
+	inFile.open("0.txt");
+
+	//Check for Error
+	if (inFile.fail()) {
+
+		cerr << "Error Opening File 0" << endl;
+		exit(1);
+
+	}
+
+
+
+	double X[11], Y[11];
+
+	for (int i = 0; i <= 9; i++) {
+		inFile >> X[i] >> Y[i];
+
+	}
+	double sumX1 = X[0] + X[1] + X[2] + X[3] + X[4] + X[5] + X[6] + X[7] + X[8] + X[9];
+
+	double sumY1 = Y[0] + Y[1] + Y[2] + Y[3] + Y[4] + Y[5] + Y[6] + Y[7] + Y[8] + Y[9];
+
+	
+	double sumXY1 = X[0] * Y[0] + X[1] * Y[1] + X[2] * Y[2] + X[3] * Y[3] + X[4] * Y[4] + X[5] * Y[5] + X[6] * Y[6] + X[7] * Y[7] + X[8] * Y[8] + X[9] * Y[9];
+	double sumX21 = X[0] * X[0] + X[1] * X[1] + X[2] * X[2] + X[3] * X[3] + X[4] * X[4] + X[5] * X[5] + X[6] * X[6] + X[7] * X[7] + X[8] * X[8] + X[9] * X[9];
+
+	cout << "------------------File 0, When temperature= 0 Degree--------------------" << endl << endl;
+	cout << "sumX=   " << sumX1			<< "	\n";
+	cout << "sumY=   " << sumY1			<< "	\n";
+	cout << "sumXY=  " << sumXY1		<< "	\n";
+	cout << "sumX2=  " << sumX21		<< endl << endl;
+
+	double Slope;
+	Slope = ((10 * sumXY1) - (sumX1 * sumY1)) / (10 * sumX21 - (sumX1 * sumX1));
+
+	cout << "Slope=        " << Slope << "		\n";
+
+	double Conductivity0;
+	Conductivity0 = Slope * 200;
+
+	cout << "Conductivity= " << Conductivity0 << endl << endl;
+
+	outFile << "------------------File 0, When temperature= 0 Degree--------------------" << endl << endl;
+	outFile << "sumX=   " << sumX1			<< "	\n";
+	outFile << "sumY=   " << sumY1			<< "	\n";
+	outFile << "sumXY=  " << sumXY1			<< "	\n";
+	outFile << "sumX2=  " << sumX21			<< endl<<endl;
+
+	outFile << "Slope=        " << Slope	<< "		\n";
+	outFile << "Conductivity= " << Conductivity0		<< endl << endl;
+
+
+	inFile.close();
+	//outFile.close();
+	
+	//-------------------End 0 File-----------------//
+
+	//-------------Start doing 20 File--------------//
+
+	ifstream inFile20;
+	inFile20.open("20.txt");
+
+	//Check for Error
+	if (inFile20.fail()) {
+
+		cerr << "Error Opening File 20" << endl;
+		exit(1);
+
+	}
+
+	double X20[11], Y20[11];
+
+	for (int i = 0; i <= 9; i++) {
+		inFile20 >> X20[i] >> Y20[i];
+
+	}
+	double sum20X = X20[0] + X20[1] + X20[2] + X20[3] + X20[4] + X20[5] + X20[6] + X20[7] + X20[8] + X20[9];
+
+	double sum20Y = Y20[0] + Y20[1] + Y20[2] + Y20[3] + Y20[4] + Y20[5] + Y20[6] + Y20[7] + Y20[8] + Y20[9];
+
+
+	double sum20XY = X20[0] * Y20[0] + X20[1] * Y20[1] + X20[2] * Y20[2] + X20[3] * Y20[3] + X20[4] * Y20[4] + X20[5] * Y20[5] + X20[6] * Y20[6] + X20[7] * Y20[7] + X20[8] * Y20[8] + X20[9] * Y20[9];
+	double sum20X2 = X20[0] * X20[0] + X20[1] * X20[1] + X20[2] * X20[2] + X20[3] * X20[3] + X20[4] * X20[4] + X20[5] * X20[5] + X20[6] * X20[6] + X20[7] * X20[7] + X20[8] * X20[8] + X20[9] * X20[9];
+
+	cout << "------------------File 20, When temperature= 20 Degree--------------------" << endl << endl;
+	cout << "sumX=   " << sum20X		<< "	\n";
+	cout << "sumY=   " << sum20Y		<< "	\n";
+	cout << "sumXY=  " << sum20XY		<< "	\n";
+	cout << "sumX2=  " << sum20X2		<< endl << endl;
+
+	double Slope20;
+	Slope20 = ((10 * sum20XY) - (sum20X * sum20Y)) / (10 * sum20X2 - (sum20X * sum20X));
+
+	cout << "Slope=        " << Slope20 << "		\n";
+
+	double Conductivity20;
+	Conductivity20 = Slope20 * 200;
+
+	cout << "Conductivity= " << Conductivity20 << endl << endl;
+
+	outFile << "------------------File 20, When temperature= 0 Degree--------------------" << endl << endl;
+	outFile << "sumX=   " << sum20X			<< "	\n";
+	outFile << "sumY=   " << sum20Y			<< "	\n";
+	outFile << "sumXY=  " << sum20XY		<< "	\n";
+	outFile << "sumX2=  " << sum20X2		<< endl << endl;
+
+	outFile << "Slope=        " << Slope	<< "	\n";
+	outFile << "Conductivity= " << Conductivity20		<< endl << endl;
+
+
+	inFile20.close();
+	
+
+	//-------------------End 20 File-----------------//
+
+	//-------------Start doing 40 File--------------//
+
+	ifstream inFile40;
+	inFile40.open("40.txt");
+
+	//Check for Error
+	if (inFile40.fail()) {
+
+		cerr << "Error Opening File 40" << endl;
+		exit(1);
+
+	}
+
+	double X40[11], Y40[11];
+
+	for (int i = 0; i <= 9; i++) {
+
+		inFile40 >> X40[i] >> Y40[i];
+
+	}
+	double sum40X = X40[0] + X40[1] + X40[2] + X40[3] + X40[4] + X40[5] + X40[6] + X40[7] + X40[8] + X40[9];
+
+	double sum40Y = Y40[0] + Y40[1] + Y40[2] + Y40[3] + Y40[4] + Y40[5] + Y40[6] + Y40[7] + Y40[8] + Y40[9];
+
+
+	double sum40XY = X40[0] * Y40[0] + X40[1] * Y40[1] + X40[2] * Y40[2] + X40[3] * Y40[3] + X40[4] * Y40[4] + X40[5] *
+		Y40[5] + X40[6] * Y40[6] + X40[7] * Y40[7] + X40[8] * Y40[8] + X40[9] * Y40[9];
+
+	double sum40X2= X40[0] * X40[0]+X40[1] * X40[1] + X40[2] * X40[2] + X40[3] * X40[3] + X40[4] * X40[4] + X40[5] *
+		X40[5] + X40[6] * X40[6] + X40[7] * X40[7] + X40[8] * X40[8] + X40[9] * X40[9];
+
+	cout << "------------------File 40, When temperature= 40 Degree--------------------" << endl << endl;
+	cout << "sumX2=   " << sum40X		<< "	\n";
+	cout << "sumY2=   " << sum40Y		<< "	\n";
+	cout << "sumXY2=  " << sum40XY	    << "	\n";
+	cout << "sumX2=  " << sum40X2		<< endl << endl;
+
+	double Slope40;
+	Slope40 = ((10 * sum40XY) - (sum40X * sum40Y)) / (10 * sum40X2 - (sum40X * sum40X));
+
+	cout << "Slope=        " << Slope40 << "		\n";
+
+	double Conductivity40;
+	Conductivity40 = Slope40 * 200;
+
+	cout << "Conductivity= " << Conductivity40 << endl << endl;
+
+	outFile << "------------------File 40, When temperature= 40 Degree--------------------" << endl << endl;
+	outFile << "sumX=   " << sum40X		 << "	\n";
+	outFile << "sumY=   " << sum40Y		 << "	\n";
+	outFile << "sumXY=  " << sum40XY		 << "		\n";
+	outFile << "sumX2=  " << sum40X2		 << endl << endl;
+
+	outFile << "Slope=        " << Slope40	 << "		\n";
+	outFile << "Conductivity= " << Conductivity40		 << endl << endl;
+
+
+	inFile40.close();
+	
+
+	//-------------------End 40 File-----------------//
+
+	//-------------Start doing 60 File--------------//
+
+	ifstream inFile60;
+	inFile60.open("60.txt");
+
+	//Check for Error
+	if (inFile60.fail()) {
+
+		cerr << "Error Opening File 60" << endl;
+		exit(1);
+
+	}
+
+	double X60[11], Y60[11];
+
+	for (int i = 0; i <= 9; i++) {
+		inFile60 >> X60[i] >> Y60[i];
+
+	}
+	double sum60X = X60[0] + X60[1] + X60[2] + X60[3] + X60[4] + X60[5] + X60[6] + X60[7] + X60[8] + X60[9];
+
+	double sum60Y = Y60[0] + Y60[1] + Y60[2] + Y60[3] + Y60[4] + Y60[5] + Y60[6] + Y60[7] + Y60[8] + Y60[9];
+
+
+	double sum60XY = X60[0] * Y60[0] + X60[1] * Y60[1] + X60[2] * Y60[2] + X60[3] * Y60[3] + X60[4] * Y60[4] + X60[5] *
+		Y60[5] + X60[6] * Y60[6] + X60[7] * Y60[7] + X60[8] * Y60[8] + X60[9] * Y60[9];
+
+	double sum60X2 = X60[0] * X60[0] + X60[1] * X60[1] + X60[2] * X60[2] + X60[3] * X60[3] + X60[4] * X60[4] + X60[5] *
+		X60[5] + X60[6] * X60[6] + X60[7] * X60[7] + X60[8] * X60[8] + X60[9] * X60[9];
+
+	cout << "------------------File 60, When temperature= 60 Degree--------------------" << endl << endl;
+	cout << "sumX2=   " << sum60X			<< "	\n";
+	cout << "sumY2=   " << sum60Y			<< "	\n";
+	cout << "sumXY2=  " << sum60XY		<< "		\n";
+	cout << "sumX2=   " << sum60X2			<< endl << endl;
+
+	double Slope60;
+	Slope60 = ((10 * sum60XY) - (sum60X * sum60Y)) / (10 * sum60X2 - (sum60X * sum60X));
+
+	cout << "Slope=        " << Slope60 << "		\n";
+
+	double Conductivity60;
+	Conductivity60 = Slope60 * 200;
+
+	cout << "Conductivity= " << Conductivity60 << endl << endl;
+
+	outFile << "------------------File 60, When temperature= 60 Degree--------------------" << endl << endl;
+	outFile << "sumX=   " << sum60X		 << "	\n";
+	outFile << "sumY=   " << sum60Y		 << "	\n";
+	outFile << "sumXY=  " << sum60XY		 << "		\n";
+	outFile << "sumX2=  " << sum60X2		 << endl << endl;
+
+	outFile << "Slope=        " << Slope60	 << "		\n";
+	outFile << "Conductivity= " << Conductivity60	 << endl << endl;
+
+
+	inFile60.close();
+	
+
+	//-------------------End 60 File-----------------//
+
+	//-------------Start doing 80 File--------------//
+
+	ifstream inFile80;
+	inFile80.open("80.txt");
+
+	//Check for Error
+	if (inFile80.fail()) {
+
+		cerr << "Error Opening File 80" << endl;
+		exit(1);
+
+	}
+
+	double X80[11], Y80[11];
+
+	for (int i = 0; i <= 9; i++) {
+		inFile80 >> X80[i] >> Y80[i];
+
+	}
+	double sum80X = X80[0] + X80[1] + X80[2] + X80[3] + X80[4] + X80[5] + X80[6] + X80[7] + X80[8] + X80[9];
+
+	double sum80Y = Y80[0] + Y80[1] + Y80[2] + Y80[3] + Y80[4] + Y80[5] + Y80[6] + Y80[7] + Y80[8] + Y80[9];
+
+
+	double sum80XY = X80[0] * Y80[0] + X80[1] * Y80[1] + X80[2] * Y80[2] + X80[3] * Y80[3] + X80[4] * Y80[4] + X80[5] *
+		Y80[5] + X80[6] * Y80[6] + X80[7] * Y80[7] + X80[8] * Y80[8] + X80[9] * Y80[9];
+
+	double sum80X2 = X80[0] * X80[0] + X80[1] * X80[1] + X80[2] * X80[2] + X80[3] * X80[3] + X80[4] * X80[4] + X80[5] *
+		X80[5] + X80[6] * X80[6] + X80[7] * X80[7] + X80[8] * X80[8] + X80[9] * X80[9];
+
+	cout << "------------------File 80, When temperature= 80 Degree--------------------" << endl << endl;
+	cout << "sumX2=   " << sum80X		<< "	\n";
+	cout << "sumY2=   " << sum80Y		<< "	\n";
+	cout << "sumXY2=  " << sum80XY		<< "	\n";
+	cout << "sumX2=   " << sum80X2		<< endl << endl;
+
+	double Slope80;
+	Slope80 = ((10 * sum80XY) - (sum80X * sum80Y)) / (10 * sum80X2 - (sum80X * sum80X));
+
+	cout << "Slope=        " << Slope80<< "		\n";
+
+	double Conductivity80;
+	Conductivity80 = Slope80* 200;
+
+	cout << "Conductivity= " << Conductivity80 << endl << endl;
+
+	outFile << "------------------File 80, When temperature= 80 Degree--------------------" << endl << endl;
+	outFile << "sumX=   " << sum80X			<< "	\n";
+	outFile << "sumY=   " << sum80Y			<< "	\n";
+	outFile << "sumXY=  " << sum80XY			<< "		\n";
+	outFile << "sumX2=  " << sum80X2			<< endl << endl;
+
+	outFile << "Slope=        " << Slope80	<< "		\n";
+	outFile << "Conductivity= " << Conductivity80		<< endl << endl;
+
+
+	inFile80.close();
+	
+
+	//-------------------End 80 File-----------------//
+
+	//-------------Start doing 100 File--------------//
+
+	ifstream inFile100;
+	inFile100.open("100.txt");
+
+	//Check for Error
+	if (inFile100.fail()) {
+
+		cerr << "Error Opening File 100" << endl;
+		exit(1);
+
+	}
+
+	double X100[11], Y100[11];
+
+	for (int i = 0; i <= 9; i++) {
+		inFile100 >> X100[i] >> Y100[i];
+
+	}
+	double sum100X = X100[0] + X100[1] + X100[2] + X100[3] + X100[4] + X100[5] + X100[6] + X100[7] + X100[8] + X100[9];
+
+	double sum100Y = Y100[0] + Y100[1] + Y100[2] + Y100[3] + Y100[4] + Y100[5] + Y100[6] + Y100[7] + Y100[8] + Y100[9];
+
+
+	double sum100XY = X100[0] * Y100[0] + X100[1] * Y100[1] + X100[2] * Y100[2] + X100[3] * Y100[3] + X100[4] * Y100[4] + X100[5] *
+		Y100[5] + X100[6] * Y100[6] + X100[7] * Y100[7] + X100[8] * Y100[8] + X100[9] * Y100[9];
+
+	double sum100X2 = X100[0] * X100[0] + X100[1] * X100[1] + X100[2] * X100[2] + X100[3] * X100[3] + X100[4] * X100[4] + X100[5] *
+		X100[5] + X100[6] * X100[6] + X100[7] * X100[7] + X100[8] * X100[8] + X100[9] * X100[9];
+
+	cout << "------------------File 100, When temperature= 100 Degree--------------------" << endl << endl;
+	cout << "sumX2=   " << sum100X		<< "	\n";
+	cout << "sumY2=   " << sum100Y		<< "	\n";
+	cout << "sumXY2=  " << sum100XY		<< "	\n";
+	cout << "sumX2=  " << sum100X2		<< endl << endl;
+
+	double Slope100;
+	Slope100 = ((10 * sum100XY) - (sum100X * sum100Y)) / (10 * sum100X2 - (sum100X * sum100X));
+
+	cout << "Slope=        " << Slope100 << "		\n";
+
+	double Conductivity100;
+	Conductivity100 = Slope100 * 200;
+
+	cout << "Conductivity= " << Conductivity100 << endl << endl;
+
+	outFile << "------------------File 100, When temperature= 100 Degree--------------------" << endl << endl;
+	outFile << "sumX=   " << sum100X			<< "	\n";
+	outFile << "sumY=   " << sum100Y			<< "	\n";
+	outFile << "sumXY=  " << sum100XY		<< "	\n";
+	outFile << "sumX2=  " << sum100X2		<< endl << endl;
+
+	outFile << "Slope=        " << Slope100	<< "		\n";
+	outFile << "Conductivity= " << Conductivity100		<< endl << endl;
+
+
+	inFile100.close();
+	
+
+	//-------------------End 100 File-----------------//
+
+	//-------------Start Calculating Energy band gap--------------//
+
+	
+	cout << "-------------Start Calculating Energy band gap--------------" << endl<<endl;
+
+	double Temperature[] = { 273,293,313,333,353,373 };
+	1/Temperature[0]  ;
+	1 / Temperature[1];
+	1 / Temperature[2];
+	1 / Temperature[3];
+	1 / Temperature[4];
+	1 / Temperature[5];
+	
+	double SumXT;
+	SumXT = 1 / Temperature[0] +
+		1 / Temperature[1] +
+		1 / Temperature[2] +
+		1 / Temperature[3] +
+		1 / Temperature[4] +
+		1 / Temperature[5]  ;
+
+	double SumYLnS;
+	SumYLnS = log(Conductivity0) + log(Conductivity20) + log(Conductivity40) + log(Conductivity60) + log(Conductivity80) + log(Conductivity100);
+
+
+	double SumXYTLnS;
+	SumXYTLnS = SumXT * SumYLnS;
+
+	double SumXXT2;
+	SumXXT2 = SumXT * SumXT;
+
+	double SlopeT;
+	SlopeT= ((10 * SumXYTLnS) - (SumXT *SumYLnS)) / (10 * SumXXT2 - (SumXT * SumXT));
+
+
+	
+
+	cout << "------------------The Energy Band Gap--------------------" << endl << endl;
+	cout << "Sum of 1/T (X)=   " << SumXT		<< "	\n";
+	cout << "Sum of LnS (Y)=   " << SumYLnS		<< "	\n";
+	cout << "sumXY=            " << SumXYTLnS	<< "	\n";
+	cout << "sumX2=            " << SumXXT2		<< endl << endl;
+
+
+	cout << "Slope=        " << SlopeT << "		\n";
+
+	double Eg;
+	Eg = -SlopeT * 2*8.6173E-5;
+
+	cout << "Energy Band Gap= " << Eg<< endl << endl;
+
+	outFile << "------------------The Energy Band Gap (Eg) is: --------------------" << endl << endl;
+	outFile << "Sum of 1/T (X)=   " << SumXT     << "	\n";
+	outFile << "Sum of LnS (Y)=   " << SumYLnS   << "	\n";
+	outFile << "sumXY=            " << SumXYTLnS << "	\n";
+	outFile << "sumX2=            " << SumXXT2   << endl << endl;
+	outFile << "Slope=            " << SlopeT    << "	\n";
+	outFile << "Energy Band Gap=  " << Eg		 <<" eV"<< endl << endl;
+
+
+	inFile.close();
+	outFile.close();
+
+
+}
